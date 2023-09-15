@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React  from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import './App.css';
 import Chat from './Components/Chat/Chat';
@@ -8,7 +8,7 @@ import { useStateValue } from './StateProvider';
 
 function App() {
 
-  const [{ user }, dispath] = useStateValue();
+  const [{ user }] = useStateValue();
 
   return (
     <div className="App">

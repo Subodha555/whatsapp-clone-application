@@ -30,7 +30,7 @@ function Chat() {
   const [roomName, setRoomName] = useState<string>("");
   const [messages, setMessages] = useState<Message[]>([]);
 
-  const [{ user }, dispatch] = useStateValue();
+  const [{ user }] = useStateValue();
 
   useEffect(() => {
     if (roomId) {
@@ -73,10 +73,8 @@ function Chat() {
                 <div className='chat__headerInfo'>
                     <h3>{roomName}</h3>
                     <p>Last seen {" "}
-                    {messages[messages.length -1]?.
-                        timestamp ? new Date(
-                        messages[messages.length -1].
-                        timestamp.toDate()
+                    {messages[messages.length -1]?.timestamp ? new Date(
+                        messages[messages.length -1].timestamp.toDate()
                     ).toUTCString() : "*****************************"}
                     </p>
                 </div>
@@ -94,8 +92,8 @@ function Chat() {
             </div>
 
               <div className='chat__body'>
-                {messages.map((message) => (
-                  <p key={message.timestamp?.toDate().getTime()} className={`chat__message ${message.name === user?.displayName && 'chat__receiver'}`}>
+                {messages.map((message, index) => (
+                  <p key={index} className={`chat__message ${message.name === user?.displayName && 'chat__receiver'}`}>
                     <span className='chat__name'>{message.name}</span>
                     {message.message}
                     <span className='chat__timestamp'>

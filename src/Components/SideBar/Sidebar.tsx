@@ -19,7 +19,7 @@ interface Room {
 
 function Sidebar() {
     const [rooms, setRooms] = useState<Room[]>([]);
-    const [{ user }, dispatch] = useStateValue();
+    const [{ user }] = useStateValue();
 
     useEffect(() => {
         const unsubscribe = db.collection('rooms').onSnapshot((snapshot) => {
